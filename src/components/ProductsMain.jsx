@@ -15,129 +15,170 @@ const ProductsMain = () => {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const [numberItem1, setNumberItem1] = useState(0)
-    const [numberItem2, setNumberItem2] = useState(1)
-    const [numberItem3, setNumberItem3] = useState(2)
-
+    
     const itemsData = [
         {
             id: 1,
             image: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=600',
-            price: 'R$ 58,99',
+            price: 'R$ 588,99',
             description: 'Nike Dunk mummy branco limited edition plus plas bing',
             index: 0
         },
         {
             id: 2,
             image: 'https://images.pexels.com/photos/12628400/pexels-photo-12628400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            price: 'R$ 200,00',
+            price: 'R$ 512,00',
             description: 'Nike Air force branco limited edition collab Jhon Senna',
             index: 1
         },
         {
             id: 3,
             image: 'https://images.pexels.com/photos/3261069/pexels-photo-3261069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-            price: 'R$ 58,99',
+            price: 'R$ 109,99',
             description: 'Nike Dunk mummy branco limited edition plus plas bing',
             index: 2
         },
         {
             id: 4,
             image: 'https://images.pexels.com/photos/8957613/pexels-photo-8957613.png?auto=compress&cs=tinysrgb&w=600&lazy=load',
-            price: 'R$ 58,99',
+            price: 'R$ 1.100,99',
             description: 'Nike Dunk mummy branco limited edition plus plas bing',
-            index: 0
+            index: 3
         },
         {
             id: 5,
             image: 'https://images.pexels.com/photos/9214280/pexels-photo-9214280.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             price: 'R$ 101,00',
             description: 'Nike Air Jordan blue collab fit.co',
-            index: 1
+            index: 4
         },
         {
             id: 6,
             image: 'https://images.pexels.com/photos/1598508/pexels-photo-1598508.jpeg?auto=compress&cs=tinysrgb&w=600',
             price: 'R$ 58,99',
             description: 'Nike Dunk mummy branco limited edition plus plas bing',
-            index: 2
+            index: 5
         },
         {
             id: 7,
-            image: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=600',
+            image: 'https://media.istockphoto.com/id/1303978937/pt/foto/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?b=1&s=612x612&w=0&k=20&c=E-alCqbl6m0uzTcnDlQmkuXwkmHQyQy595K7jvGM7QU=',
             price: 'R$ 58,99',
             description: 'Nike Dunk mummy branco limited edition plus plas bing',
-            index: 0
+            index: 6
         },
         {
             id: 8,
-            image: 'https://images.pexels.com/photos/12628400/pexels-photo-12628400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            image: 'https://images.pexels.com/photos/2404959/pexels-photo-2404959.png?auto=compress&cs=tinysrgb&w=600',
             price: 'R$ 200,00',
             description: 'Nike Air force branco limited edition collab Jhon Senna',
-            index: 1
+            index: 7
         },
         {
             id: 9,
-            image: 'https://images.pexels.com/photos/3261069/pexels-photo-3261069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            image: 'https://images.pexels.com/photos/4490019/pexels-photo-4490019.jpeg?auto=compress&cs=tinysrgb&w=600',
             price: 'R$ 58,99',
             description: 'Nike Dunk mummy branco limited edition plus plas bing',
-            index: 2
+            index: 8
         }
     ]
-
     
+    
+    const [numberItem1, setNumberItem1] = useState(0)
+    const [numberItem2, setNumberItem2] = useState(1)
+    const [numberItem3, setNumberItem3] = useState(2)
     
     const [seenItems, setSeenItems] = useState([
         
-            itemsData[numberItem1],
-            itemsData[numberItem2],
-            itemsData[numberItem3]   
+        itemsData[numberItem1],
+        itemsData[numberItem2],
+        itemsData[numberItem3]   
     ]) 
-
-
     
-
+    
 
 
     const nextSeenItems = () => {
         setIsLoading(true)
+        
 
-        setNumberItem1(numberItem1 + 3)
-        setNumberItem2(numberItem2 + 3)
-        setNumberItem3(numberItem3 + 3)
+        // if(numberItem1 >= itemsData.length - 1){
+        //     setNumberItem1(0)
+        //     setNumberItem2(1)
+        //     setNumberItem3(2)
+
+
+        //     setNumberItem1(numberItem1 + 3)
+        //     setNumberItem2(numberItem2 + 3)
+        //     setNumberItem3(numberItem3 + 3)
+        // }  
+        //     setSeenItems([
+        //         itemsData[numberItem1 + 3],
+        //         itemsData[numberItem2 + 3],
+        //         itemsData[numberItem3 + 3]   
+        //     ])
+
+
+        let newNumberItem1 = numberItem1 + 3;
+        let newNumberItem2 = numberItem2 + 3;
+        let newNumberItem3 = numberItem3 + 3;
+
+        if (newNumberItem1 >= itemsData.length) {
+            newNumberItem1 = 0;
+        }
+        if (newNumberItem2 >= itemsData.length) {
+            newNumberItem2 = 1;
+        }
+        if (newNumberItem3 >= itemsData.length) {
+            newNumberItem3 = 2;
+        }
+
+        setNumberItem1(newNumberItem1);
+        setNumberItem2(newNumberItem2);
+        setNumberItem3(newNumberItem3);
 
         setSeenItems([
-            itemsData[numberItem1 + 3],
-            itemsData[numberItem2 + 3],
-            itemsData[numberItem3 + 3]   
-        ])
+            itemsData[newNumberItem1],
+            itemsData[newNumberItem2],
+            itemsData[newNumberItem3]
+        ]);
+        
+
 
         setIsLoading(false)
-
-        console.log('clicked')
     }
+
+
 
     const prevSeenItems = () => {
         setIsLoading(true)
 
-        setNumberItem1(numberItem1 - 3)
-        setNumberItem2(numberItem2 - 3)
-        setNumberItem3(numberItem3 - 3)
+        let newNumberItem1 = numberItem1 - 3;
+        let newNumberItem2 = numberItem2 - 3;
+        let newNumberItem3 = numberItem3 - 3;
+
+        if (newNumberItem1 < 0) {
+            newNumberItem1 = itemsData.length - 3;
+        }
+        if (newNumberItem2 < 1) {
+            newNumberItem2 = itemsData.length - 2;
+        }
+        if (newNumberItem3 < 2) {
+            newNumberItem3 = itemsData.length - 1;
+        }
+
+
+        setNumberItem1(newNumberItem1);
+        setNumberItem2(newNumberItem2);
+        setNumberItem3(newNumberItem3);
 
         setSeenItems([
-            itemsData[numberItem1 - 3],
-            itemsData[numberItem2 - 3],
-            itemsData[numberItem3 - 3]   
-        ])
+            itemsData[newNumberItem1],
+            itemsData[newNumberItem2],
+            itemsData[newNumberItem3]
+        ]);
 
         setIsLoading(false)
-
-        console.log('clicked')
     }
-
-    console.log(seenItems)
-    
-
   
     return(
         <div className='productsmain-container'>
