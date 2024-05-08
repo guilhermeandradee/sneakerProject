@@ -6,14 +6,26 @@ import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaArrowDown } from "react-icons/fa";
 
-import Slider from "react-slick";
-
-
-
+import styled from 'styled-components';
+import { useMediaQuery } from 'react-responsive';
 
 const ProductsMain = () => {
 
     const [isLoading, setIsLoading] = useState(false)
+
+    const smallQuery = useMediaQuery({ maxWidth: 375 });
+    const largeQuery = useMediaQuery({ minWidth: 678 });
+
+    if(largeQuery){
+        var useLargeQuery = true
+        var useSmallQuery = false
+    }
+
+    if(smallQuery){
+        var useSmallQuery = true
+        var useLargeQuery = false
+    }
+    
 
     
     const itemsData = [
@@ -93,30 +105,9 @@ const ProductsMain = () => {
         itemsData[numberItem2],
         itemsData[numberItem3]   
     ]) 
-    
-    
-
 
     const nextSeenItems = () => {
         setIsLoading(true)
-        
-
-        // if(numberItem1 >= itemsData.length - 1){
-        //     setNumberItem1(0)
-        //     setNumberItem2(1)
-        //     setNumberItem3(2)
-
-
-        //     setNumberItem1(numberItem1 + 3)
-        //     setNumberItem2(numberItem2 + 3)
-        //     setNumberItem3(numberItem3 + 3)
-        // }  
-        //     setSeenItems([
-        //         itemsData[numberItem1 + 3],
-        //         itemsData[numberItem2 + 3],
-        //         itemsData[numberItem3 + 3]   
-        //     ])
-
 
         let newNumberItem1 = numberItem1 + 3;
         let newNumberItem2 = numberItem2 + 3;
@@ -147,11 +138,7 @@ const ProductsMain = () => {
         setIsLoading(false)
     }
 
-
-
     const prevSeenItems = () => {
-        setIsLoading(true)
-
         let newNumberItem1 = numberItem1 - 3;
         let newNumberItem2 = numberItem2 - 3;
         let newNumberItem3 = numberItem3 - 3;
@@ -176,9 +163,46 @@ const ProductsMain = () => {
             itemsData[newNumberItem2],
             itemsData[newNumberItem3]
         ]);
-
-        setIsLoading(false)
     }
+// Lógica do Carrossel para a tela pequena
+ 
+    const [smallNumberItem1, setSmallNumberItem1] = useState(0)
+
+    const [seenItemSmall, setSeenItemSmall] = useState([
+        itemsData[smallNumberItem1]
+    ])
+
+    const nextSeenSmallItem = () => {
+        let newNumberItem1 = smallNumberItem1 + 1;
+
+        if (newNumberItem1 >= itemsData.length) {
+            newNumberItem1 = 0;
+        }
+
+        setSmallNumberItem1(newNumberItem1);
+
+        setSeenItemSmall([
+            itemsData[newNumberItem1]
+        ]);
+    }
+
+    const prevSeenSmallItem = () => {
+        let newNumberItem1 = smallNumberItem1 - 1;
+
+        if (newNumberItem1 < 0) {
+            newNumberItem1 = itemsData.length - 1;
+        }
+
+
+        setSmallNumberItem1(newNumberItem1);
+
+        setSeenItemSmall([
+            itemsData[newNumberItem1]
+        ]);
+    }
+
+
+
   
     return(
         <div className='productsmain-container'>
@@ -187,7 +211,7 @@ const ProductsMain = () => {
             </div>
             <main className='productsmain-main'>
                 <div className='arrow-main'>
-                    <IoIosArrowBack onClick={prevSeenItems} className='arrow-main'/>
+                    <IoIosArrowBack onClick={smallQuery ? prevSeenSmallItem : prevSeenItems} className='arrow-main'/>
                 </div>
 
                 <div className='item-product-main-container'>
@@ -261,7 +285,7 @@ const ProductsMain = () => {
                         </div>
                     </div> */}
 
-                    { !isLoading && seenItems.map((product) => {
+                    {largeQuery ? seenItems.map((product) => {
                         return(
                             <div className='item-product-main'>
                             
@@ -284,13 +308,36 @@ const ProductsMain = () => {
                             </div>
                         </div>
                         )
-                    })}
+                    }) : seenItemSmall.map((product) => {
+                        return(
+                            <div className='item-product-main'>
+                            
+                            <div className='item-product-main-img-container' >
+                                <div className='item-product-main-img' style={{
+                                backgroundImage: `url(${product.image})`
+                                }}>    
+                                </div>
+
+                            </div>
+
+                            <div className='item-product-main-description'>
+                                <div className='price-main-container'>
+                                    <h1>{product.price}</h1>
+                                    <div className='price-main-promotion'>
+                                        <FaArrowDown/> 16%
+                                    </div>
+                                </div>
+                                <p>{product.description}</p>
+                            </div>
+                        </div>
+                        )
+                    })} 
                 </div>
 
 
 
                 <div className='arrow-main' >
-                    <IoIosArrowForward onClick={nextSeenItems} style={{
+                    <IoIosArrowForward onClick={smallQuery ? nextSeenSmallItem : nextSeenItems} style={{
                         width: '100%',
                         height: '100%',
                     }} />
