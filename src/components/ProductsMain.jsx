@@ -5,6 +5,8 @@ import './productsMain.css';
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { FaArrowDown } from "react-icons/fa";
+import { FaCircle } from "react-icons/fa6";
+
 
 import styled from 'styled-components';
 import { useMediaQuery } from 'react-responsive';
@@ -209,81 +211,16 @@ const ProductsMain = () => {
             <div className="productsmain-title">
                 <h1>Populares</h1>
             </div>
-            <main className='productsmain-main'>
+            { 
+            largeQuery ? 
+                <main className='productsmain-main'>
                 <div className='arrow-main'>
                     <IoIosArrowBack onClick={smallQuery ? prevSeenSmallItem : prevSeenItems} className='arrow-main'/>
                 </div>
 
                 <div className='item-product-main-container'>
 
-                    {/* <div className='item-product-main'>
-                        
-                        <div className='item-product-main-img-container' >
-                              
-                            <div className='item-product-main-img' style={{
-                                backgroundImage: 'url(https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=600)'
-                            }}>    
-                            </div>
-
-                        </div>
-
-                        <div className='item-product-main-description'>
-                            <div className='price-main-container'>
-                                <h1>R$ 58,99</h1>
-                                <div className='price-main-promotion'>
-                                    <FaArrowDown/> 16%
-                                </div>
-                            </div>
-                            <p>Nike Dunk mummy branco limited edition plus plas bing</p>
-                        </div>
-                        
-                    </div>
-
                     
-
-                    <div className='item-product-main'>
-                        
-                        <div className='item-product-main-img-container' >
-                            <div className='item-product-main-img' style={{
-                            backgroundImage: 'url(https://images.pexels.com/photos/12628400/pexels-photo-12628400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)'
-                            }}>    
-                            </div>
-
-                        </div>
-
-                        <div className='item-product-main-description'>
-                            <div className='price-main-container'>
-                                <h1>R$ 58,99</h1>
-                                <div className='price-main-promotion'>
-                                    <FaArrowDown/> 16%
-                                </div>
-                            </div>
-                            <p>Nike Dunk mummy branco limited edition</p>
-                        </div>
-                    </div>
-
-                    <div className='item-product-main'>
-                        
-                        <div className='item-product-main-img-container' >
-
-                            <div className='item-product-main-img' style={{
-                            backgroundImage: 'url(https://images.pexels.com/photos/3261069/pexels-photo-3261069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)'
-                            }}>    
-                            </div>
-                            
-
-                        </div>
-
-                        <div className='item-product-main-description'>
-                            <div className='price-main-container'>
-                                <h1>R$ 58,99</h1>
-                                <div className='price-main-promotion'>
-                                    <FaArrowDown /> 16%
-                                </div>
-                            </div>
-                            <p>Nike Dunk mummy branco limited edition</p>
-                        </div>
-                    </div> */}
 
                     {largeQuery ? seenItems.map((product) => {
                         return(
@@ -342,7 +279,100 @@ const ProductsMain = () => {
                         height: '100%',
                     }} />
                 </div>
+            </main> 
+             
+
+            : // Separa tela grande e pequena
+            
+
+            <main className='productsmain-main'>
+                <div className='item-product-main-container'>
+
+                    
+
+                    {largeQuery ? seenItems.map((product) => {
+                        return(
+                            <div className='item-product-main'>
+                            
+                            <div className='item-product-main-img-container' >
+                                <div className='item-product-main-img' style={{
+                                backgroundImage: `url(${product.image})`
+                                }}>    
+                                </div>
+
+                            </div>
+
+                            <div className='item-product-main-description'>
+                                <div className='price-main-container'>
+                                    <h1>{product.price}</h1>
+                                    <div className='price-main-promotion'>
+                                        <FaArrowDown/> 16%
+                                    </div>
+                                </div>
+                                <p>{product.description}</p>
+                            </div>
+                        </div>
+                        )
+                    }) : seenItemSmall.map((product) => {
+                        return(
+                            <div className='item-product-main'>
+                            
+                            <div className='item-product-main-img-container' >
+                                <div className='item-product-main-img' style={{
+                                backgroundImage: `url(${product.image})`
+                                }}>    
+                                </div>
+
+                            </div>
+
+                            <div className='item-product-main-description'>
+                                <div className='price-main-container'>
+                                    <h1>{product.price}</h1>
+                                    <div className='price-main-promotion'>
+                                        <FaArrowDown/> 16%
+                                    </div>
+                                </div>
+                                <p>{product.description}</p>
+                            </div>
+                        </div>
+                        )
+                    })} 
+                </div>
+
+
+                <div className="arrows-container">
+                    <div className='arrow-main'>
+                        <IoIosArrowBack onClick={smallQuery ? prevSeenSmallItem : prevSeenItems} className='arrow-main'/>
+                    </div>
+
+                    <div className='balls-caroulsel' >
+                    <FaCircle style={{
+                        width: '15%',
+                        height: '15%',
+                    }} />
+
+                        <FaCircle style={{
+                        width: '15%',
+                        height: '15%',
+                    }} />
+
+<FaCircle style={{
+                        width: '15%',
+                        height: '15%',
+                    }} />
+                    </div>
+
+                    <div className='arrow-main' >
+                        <IoIosArrowForward onClick={smallQuery ? nextSeenSmallItem : nextSeenItems} style={{
+                            width: '100%',
+                            height: '100%',
+                        }} />
+                    </div>
+                </div>
+                
             </main>
+            
+        }
         </div>
     )
 }
