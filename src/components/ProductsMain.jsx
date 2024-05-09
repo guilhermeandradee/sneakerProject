@@ -15,7 +15,7 @@ const ProductsMain = () => {
 
     const [isLoading, setIsLoading] = useState(false)
 
-    const smallQuery = useMediaQuery({ maxWidth: 375 });
+    const smallQuery = useMediaQuery({ maxWidth: 420 });
     const largeQuery = useMediaQuery({ minWidth: 678 });
 
     if(largeQuery){
