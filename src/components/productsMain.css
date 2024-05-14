@@ -7,6 +7,11 @@
     /* justify-content: center; */
 
     min-height: 100%;
+
+    text-decoration: none;
+}
+a {
+    text-decoration: none; /* Remove o sublinhado */
 }
 
 .productsmain-title {
@@ -182,6 +187,7 @@
     
         padding: 8vw 0;
     
+        
         color: #6e6e6e;
     }
 
@@ -239,6 +245,7 @@
         display: flex;
         justify-content: space-between;
         
+        
         height: 50%;
         
         color: #333;
@@ -247,6 +254,7 @@
     
     .price-main-container > h1 {
         width: 75%;
+        text-decoration: none;
 
         font-size: 2.4vh;
     }

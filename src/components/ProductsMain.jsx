@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './productsMain.css';
 import { IoIosArrowForward } from "react-icons/io";
@@ -316,7 +317,8 @@ const ProductsMain = () => {
                         )
                     }) : seenItemSmall.map((product) => {
                         return(
-                            <div className='item-product-main'>
+                            <Link
+                            to={`/productpurchase`} className='item-product-main'>
                             
                             <div className='item-product-main-img-container' >
                                 <div className='item-product-main-img' style={{
@@ -335,7 +337,7 @@ const ProductsMain = () => {
                                 </div>
                                 <p>{product.description}</p>
                             </div>
-                        </div>
+                        </Link>
                         )
                     })} 
                 </div>
