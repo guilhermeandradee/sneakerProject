@@ -215,7 +215,9 @@ const ProductsMain = () => {
             largeQuery ? 
                 <main className='productsmain-main'>
                 <div className='arrow-main'>
-                    <IoIosArrowBack onClick={smallQuery ? prevSeenSmallItem : prevSeenItems} className='arrow-main'/>
+                    <IoIosArrowBack 
+                    onClick={smallQuery ? prevSeenSmallItem : prevSeenItems} 
+                    className='arrow-main'/>
                 </div>
 
                 <div className='item-product-main-container'>
@@ -274,10 +276,9 @@ const ProductsMain = () => {
 
 
                 <div className='arrow-main' >
-                    <IoIosArrowForward onClick={smallQuery ? nextSeenSmallItem : nextSeenItems} style={{
-                        width: '100%',
-                        height: '100%',
-                    }} />
+                    <IoIosArrowForward 
+                    onClick={smallQuery ? nextSeenSmallItem : nextSeenItems}
+                    className='arrow-main'  />
                 </div>
             </main> 
              
@@ -342,7 +343,13 @@ const ProductsMain = () => {
 
                 <div className="arrows-container">
                     <div className='arrow-main'>
-                        <IoIosArrowBack onClick={smallQuery ? prevSeenSmallItem : prevSeenItems} className='arrow-main'/>
+                        <IoIosArrowBack 
+                        onClick={smallQuery ? prevSeenSmallItem : prevSeenItems} 
+                        style={{
+                            width: '65%',
+                            height: '65%',
+                        }}/>
+                        
                     </div>
 
                     <div className='balls-caroulsel' >
@@ -363,9 +370,11 @@ const ProductsMain = () => {
                     </div>
 
                     <div className='arrow-main' >
-                        <IoIosArrowForward onClick={smallQuery ? nextSeenSmallItem : nextSeenItems} style={{
-                            width: '100%',
-                            height: '100%',
+                        <IoIosArrowForward  
+                        onClick={smallQuery ? nextSeenSmallItem : nextSeenItems} 
+                        style={{
+                            width: '65%',
+                            height: '65%',
                         }} />
                     </div>
                 </div>
