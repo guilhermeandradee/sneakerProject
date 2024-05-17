@@ -367,8 +367,8 @@ button.purchase-button:hover {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 20vw;
-        height: 5.2vw;
+        width: 22vw;
+        height: 6.2vw;
     
         border: none;
         /* border-radius: 5px; */
@@ -388,7 +388,7 @@ button.purchase-button:hover {
         align-items: center;
         justify-content: center;
     
-        height: 5.2vw;;
+        height: 6.2vw;
     
         padding: 1vw;
     
@@ -405,7 +405,7 @@ button.purchase-button:hover {
         align-items: center;
         justify-content: center;
     
-        height: 5.2vw;;
+        height: 6.2vw;
     
         padding: 1vw;
     

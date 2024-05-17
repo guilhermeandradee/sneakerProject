@@ -34,6 +34,7 @@ const ProductsMain = () => {
     const itemsData = [
         {
             id: 1,
+            name: 'nikeDunk',
             image: 'https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=600',
             price: 'R$ 588,99',
             description: 'Nike Dunk mummy branco limited edition plus plas bing',
@@ -317,8 +318,8 @@ const ProductsMain = () => {
                         )
                     }) : seenItemSmall.map((product) => {
                         return(
-                            <Link
-                            to={`/productpurchase`} className='item-product-main'>
+                            <Link state={{product}}
+                            to={`/productpurchase/${product.name}`} className='item-product-main'>
                             
                             <div className='item-product-main-img-container' >
                                 <div className='item-product-main-img' style={{

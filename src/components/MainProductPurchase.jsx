@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import './MainProductPurchase.css'
+import Footer from './Footer'
+
+import { useParams } from 'react-router-dom'
 
 const MainProductPurchase = () => {
 
@@ -11,10 +14,12 @@ const MainProductPurchase = () => {
     const rmvQuantityCounter = () => {
         quantityCounter > 1 && setQuantityCounter(quantityCounter - 1)
     }
+
     
 
 
     return(
+        <>
         <main className="main-container">
 
                 <div className="purchase-img-products" >
@@ -83,8 +88,11 @@ const MainProductPurchase = () => {
                         <button className='purchase-button' >Comprar</button>
                     </div>
                 </div>
-
+                
             </main>
+            <Footer/>
+        </>  
+
     )
 }
 
